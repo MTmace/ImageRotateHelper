@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageRotateHelper", "ImageRotateHelper.csproj", "{D519E257-CCF5-49A8-9A06-81A4BBF2C5DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D519E257-CCF5-49A8-9A06-81A4BBF2C5DD}.Debug|x86.ActiveCfg = Debug|x86
+		{D519E257-CCF5-49A8-9A06-81A4BBF2C5DD}.Debug|x86.Build.0 = Debug|x86
+		{D519E257-CCF5-49A8-9A06-81A4BBF2C5DD}.Release|x86.ActiveCfg = Release|x86
+		{D519E257-CCF5-49A8-9A06-81A4BBF2C5DD}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(VaultVsipSolution-v2) = preSolution
+		VaultHost = http://sandbox/VaultService
+		VaultRepositoryID = 2
+		VaultRepositoryGUID = ff5c14fb-84c2-490d-a010-2a9d92304eb7
+		ProjectCount = 1
+		ProjectRelativeDiskPath1 = EyeFiImageHelper.csproj
+	EndGlobalSection
+EndGlobal

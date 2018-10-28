@@ -1,0 +1,4 @@
+MetaData: http://www.exiv2.org/tags-xmp-exif.html
+Orientation: http://www.impulseadventure.com/photo/exif-orientation.html
+RotateImage: http://www.codeproject.com/KB/graphics/rotateimage.aspx
+AsciiTags: http://www.sno.phy.queensu.ca/~phil/exiftool/TagNames/EXIF.html
