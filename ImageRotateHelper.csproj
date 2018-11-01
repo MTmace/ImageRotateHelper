@@ -64,6 +64,12 @@
     <Compile Include="Code\ExifInfo.cs" />
     <Compile Include="Code\RotateHelperApplicationContext.cs" />
     <Compile Include="Code\Win32.cs" />
+    <Compile Include="QuickScan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuickScan.Designer.cs">
+      <DependentUpon>QuickScan.cs</DependentUpon>
+    </Compile>
     <Compile Include="Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -89,6 +95,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="QuickScan.resx">
+      <DependentUpon>QuickScan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
