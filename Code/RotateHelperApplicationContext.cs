@@ -19,6 +19,7 @@ namespace ImageRotateHelper.Code
         MenuItem _MIStopMenu;
         MenuItem _MIQuickScanMenu;
         MenuItem _MIExitMenu;
+        RotateImage _RotateImage;
 
         #endregion
         #region '   Constructors    '
@@ -64,7 +65,7 @@ namespace ImageRotateHelper.Code
 
             this.InitiateDirectoryMonitor();
             this.StartMonitoring();
-
+            _RotateImage = new RotateImage();
         }
 
         private ContextMenu BuildContextMenu()
@@ -165,7 +166,7 @@ namespace ImageRotateHelper.Code
                 try
                 {
                     // TODO: Log Error
-                    this.ProcessImage(e.FullPath, emi);
+                    _RotateImage.ProcessImage(e.FullPath, emi);
                 }
                 catch (Exception)
                 {
@@ -243,57 +244,6 @@ namespace ImageRotateHelper.Code
                 _QuickScanWindow.ShowDialog();
 
             _QuickScanWindow.Dispose();
-        }
-
-        private void ProcessImage(string FullPath, ExifMetaInfo EMI)
-        {
-
-            System.Drawing.Bitmap image = new System.Drawing.Bitmap(FullPath);
-
-            // EXIT IF IMAGE IS IN CORRECT ORIENTATION
-            if (EMI.Orientation.Key == 1)
-                return;
-
-            switch (EMI.Orientation.Key)
-            {
-                case 1:
-                    // IS IN CORRECT ORIENTATION
-                    break;
-                case 2:
-                    image.RotateFlip(System.Drawing.RotateFlipType.Rotate270FlipNone);
-
-                    break;
-                case 3:
-                    break;
-                case 4:
-                    break;
-                case 5:
-                    break;
-                case 6:
-                    image.RotateFlip(System.Drawing.RotateFlipType.Rotate90FlipNone);
-
-                    break;
-                case 7:
-                    break;
-                case 8:
-                    image.RotateFlip(System.Drawing.RotateFlipType.Rotate270FlipNone);
-
-                    break;
-                default:
-                    break;
-            }
-
-            try
-            {
-                image.Save(FullPath, System.Drawing.Imaging.ImageFormat.Jpeg);
-            }
-            catch (Exception)
-            {
-
-                //throw;
-            }
-
-            image.Dispose();
         }
 
         #endregion

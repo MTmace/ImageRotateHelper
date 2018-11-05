@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageRotateHelper.Code;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,24 @@ namespace ImageRotateHelper
 {
     public partial class QuickScan : Form
     {
+        private RotateImage _RotateImage;
+
         public QuickScan()
         {
             InitializeComponent();
 
             this.txtStartFolder.Text = ImageRotateHelper.Properties.Settings.Default.JpegDirectory;
             this.txtFilter.Text = ImageRotateHelper.Properties.Settings.Default.FileFilter;
+
+            _RotateImage = new RotateImage();
+            _RotateImage.OnRotateComplete += _RotateImage_OnRotateComplete;
+
+            this.pbProgress.Step = 1;
+        }
+
+        private void _RotateImage_OnRotateComplete(string imagePath)
+        {
+            this.lstRotated.Items.Add(imagePath);
         }
 
         private void btnFile_Click(object sender, EventArgs e)
@@ -38,35 +51,46 @@ namespace ImageRotateHelper
 
         private void btnStartScan_Click(object sender, EventArgs e)
         {
-            this.lblRotatedCount.Text = string.Empty;
             this.lstRotated.Items.Clear();
 
-            IEnumerable<FileInfo> images = this.GetImages(this.txtStartFolder.Text);
-            int imageCount = images.Count();
+            var imagePaths = this.txtFilter.Text.Split('|')
+                .SelectMany(filter => Directory.GetFiles(this.txtStartFolder.Text, filter, SearchOption.AllDirectories));
 
-            if (imageCount > 0)
-                this.lblRotatedCount.Text = imageCount.ToString();
+            if (imagePaths.Count() > 0)
+            {
+                this.pbProgress.Maximum = imagePaths.Count();
+                
+                this.ProcessImages(imagePaths);
+
+            }
             else
                 this.lstRotated.Items.Add("no images were found to process");
         }
 
-        private IEnumerable<FileInfo> GetImages(string directoryPath)
+        private void ProcessImages(IEnumerable<string> imagePaths)
         {
-            List<FileInfo> images = new List<FileInfo>();
+            Code.ExifMetaInfo emi = null;
 
             try
             {
-                foreach (string f in Directory.GetFiles(directoryPath, this.txtFilter.Text, SearchOption.AllDirectories))
+                this.pbProgress.Visible = true;
+
+                foreach (var imagePath in imagePaths)
                 {
-                    images.Add(new FileInfo(f));
+                    emi = new Code.ExifMetaInfo(imagePath);
+                    _RotateImage.ProcessImage(imagePath, emi);
+
+                    this.pbProgress.PerformStep();
                 }
             }
             catch (System.Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-            return images;
+            finally
+            {
+                this.pbProgress.Visible = false;
+            }
         }
     }
 }

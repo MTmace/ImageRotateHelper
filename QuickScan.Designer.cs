@@ -34,7 +34,6 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.btnStartScan = new System.Windows.Forms.Button();
             this.lstRotated = new System.Windows.Forms.ListBox();
-            this.lblRotatedCount = new System.Windows.Forms.Label();
             this.pbProgress = new System.Windows.Forms.ProgressBar();
             this.txtFilter = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -95,21 +94,11 @@
             this.lstRotated.Size = new System.Drawing.Size(477, 132);
             this.lstRotated.TabIndex = 11;
             // 
-            // lblRotatedCount
-            // 
-            this.lblRotatedCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblRotatedCount.AutoSize = true;
-            this.lblRotatedCount.Location = new System.Drawing.Point(499, 210);
-            this.lblRotatedCount.Name = "lblRotatedCount";
-            this.lblRotatedCount.Size = new System.Drawing.Size(0, 13);
-            this.lblRotatedCount.TabIndex = 12;
-            this.lblRotatedCount.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // pbProgress
             // 
             this.pbProgress.Location = new System.Drawing.Point(27, 205);
             this.pbProgress.Name = "pbProgress";
-            this.pbProgress.Size = new System.Drawing.Size(432, 23);
+            this.pbProgress.Size = new System.Drawing.Size(477, 23);
             this.pbProgress.TabIndex = 13;
             this.pbProgress.Visible = false;
             // 
@@ -139,7 +128,6 @@
             this.Controls.Add(this.txtFilter);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.pbProgress);
-            this.Controls.Add(this.lblRotatedCount);
             this.Controls.Add(this.lstRotated);
             this.Controls.Add(this.btnStartScan);
             this.Controls.Add(this.btnFolder);
@@ -163,7 +151,6 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button btnStartScan;
         private System.Windows.Forms.ListBox lstRotated;
-        private System.Windows.Forms.Label lblRotatedCount;
         private System.Windows.Forms.ProgressBar pbProgress;
         private System.Windows.Forms.TextBox txtFilter;
         private System.Windows.Forms.Label label2;

@@ -62,6 +62,7 @@
       <DependentUpon>ApplicationSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Code\ExifInfo.cs" />
+    <Compile Include="Code\RotateImage.cs" />
     <Compile Include="Code\RotateHelperApplicationContext.cs" />
     <Compile Include="Code\Win32.cs" />
     <Compile Include="QuickScan.cs">
