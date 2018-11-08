@@ -28,8 +28,9 @@ namespace ImageRotateHelper
             this.pbProgress.Step = 1;
         }
 
-        private void _RotateImage_OnRotateComplete(string imagePath)
+        private void _RotateImage_OnRotateComplete(string imagePath, int degreesRotated)
         {
+            //this.lstRotated.Items.Add(string.Format("{0} :: {1}°", imagePath, degreesRotated));
             this.lstRotated.Items.Add(imagePath);
         }
 
@@ -62,6 +63,7 @@ namespace ImageRotateHelper
                 
                 this.ProcessImages(imagePaths);
 
+                MessageBox.Show("Quick scan complete");
             }
             else
                 this.lstRotated.Items.Add("no images were found to process");
@@ -78,7 +80,7 @@ namespace ImageRotateHelper
                 foreach (var imagePath in imagePaths)
                 {
                     emi = new Code.ExifMetaInfo(imagePath);
-                    _RotateImage.ProcessImage(imagePath, emi);
+                    _RotateImage.ProcessImage(imagePath);
 
                     this.pbProgress.PerformStep();
                 }

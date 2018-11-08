@@ -166,7 +166,7 @@ namespace ImageRotateHelper.Code
                 try
                 {
                     // TODO: Log Error
-                    _RotateImage.ProcessImage(e.FullPath, emi);
+                    _RotateImage.ProcessImage(e.FullPath);
                 }
                 catch (Exception)
                 {
